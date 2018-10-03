@@ -1,8 +1,8 @@
 #!/bin/bash
 
-ln -sf .vimrc ~/.vimrc
-ln -sf .zshrc ~/.zshrc
-ln -sf .zprofile ~/.zprofile
-ln -sf .zshenv ~/.zshenv
-ln -sf .zsh_history ~/.zsh_history
-ln -sf .tmux.conf ~/.tmux.conf
+ln -sf ~/dotfiles/.vimrc ~/.vimrc
+ln -sf ~/dotfiles/.zshrc ~/.zshrc
+ln -sf ~/dotfiles/.zprofile ~/.zprofile
+ln -sf ~/dotfiles/.zshenv ~/.zshenv
+ln -sf ~/dotfiles/.zsh_history ~/.zsh_history
+ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
