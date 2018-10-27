@@ -66,6 +66,9 @@ call dein#add('cohama/lexima.vim')
 " 末尾の全角スペースと半角スペースを可視化
 call dein#add('bronson/vim-trailing-whitespace')
 
+" arduino syntax highlight
+call dein#add('sudar/vim-arduino-syntax')
+
 call dein#end()
 call dein#save_state()
 
