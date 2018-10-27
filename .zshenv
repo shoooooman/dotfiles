@@ -30,6 +30,9 @@ export PATH=$PATH:/usr/local/sbin
 # ~/.local/bin
 export PATH=$PATH:~/.local/bin
 
+# usr/local/Cellar/i386-elf-binutils/2.23/bin
+export PATH=$PATH:/usr/local/Cellar/i386-elf-binutils/2.23/bin
+
 # pythonライブラリと.local/binをPATHに追加
 for DIR in ${HOME}/Library/Python/2.7/bin ${HOME}/.local/bin ; do
         if [ -d ${DIR} ] ; then
