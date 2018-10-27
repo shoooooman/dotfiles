@@ -81,6 +81,8 @@ set smartindent " 改行時に前の行の構文をチェックし次の行の�
 set tabstop=4
 set expandtab
 set shiftwidth=4
+" clipboardと連携
+set clipboard=unnamed,autoselect
 " ペースト時の自動インデントを無効
 if &term =~ "xterm"
 	let &t_SI .= "\e[?2004h"
