@@ -41,4 +41,5 @@ for DIR in ${HOME}/Library/Python/2.7/bin ${HOME}/.local/bin ; do
 done
 
 # esp
-export PATH=$PATH:$HOME/research/zumo/esp/xtensa-esp32-elf/bin
+# when need esp, type get_esp32
+alias get_esp32="export PATH=$PATH:$HOME/research/zumo/esp/xtensa-esp32-elf/bin"
