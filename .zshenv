@@ -39,3 +39,6 @@ for DIR in ${HOME}/Library/Python/2.7/bin ${HOME}/.local/bin ; do
                 PATH=${PATH}:${DIR}
         fi
 done
+
+# esp
+export PATH=$PATH:$HOME/research/zumo/esp/xtensa-esp32-elf/bin
