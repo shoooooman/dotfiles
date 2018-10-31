@@ -43,3 +43,4 @@ done
 # esp
 # when need esp, type get_esp32
 alias get_esp32="export PATH=$PATH:$HOME/research/zumo/esp/xtensa-esp32-elf/bin"
+export IDF_PATH=$HOME/research/zumo/esp/esp-idf
