@@ -165,3 +165,5 @@ function tmux_automatically_attach_session()
 tmux_automatically_attach_session
 
 # tmux end
+
+alias less='/usr/share/vim/vim80/macros/less.sh'
