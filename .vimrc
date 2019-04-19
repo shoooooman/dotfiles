@@ -25,7 +25,7 @@ call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 " ファイルオープンを便利に
 call dein#add('Shougo/unite.vim')
 " Unite.vimで最近使ったファイルを表示できるようにする
-call dein#add('Shougo/neomru.vim')
+" call dein#add('Shougo/neomru.vim')
 
 " powerline
 call dein#add('Lokaltog/vim-powerline')
@@ -40,8 +40,10 @@ endif
 call dein#add('Shougo/neco-vim')
 call dein#add('Shougo/neco-syntax')
 call dein#add('ujihisa/neco-look')
-call dein#add('Shougo/neosnippet')
+call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
+" Clang snippet
+" call dein#add('Shougo/deoplete-clangx')
 
 "next completion by tab
 inoremap <expr><TAB> pumvisible() ? "\<C-N>" : "\<TAB>"
