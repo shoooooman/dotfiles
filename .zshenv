@@ -16,7 +16,7 @@ export PATH=/Applications/gnuplot.app:/Applications/gnuplot.app/bin:$PATH
 export PATH=$PATH:~/.nodebrew/current/bin
 
 # tex関連
-export PATH=$PATH:/usr/local/texlive/2018/bin/x86_64-darwin
+# export PATH=$PATH:/usr/local/texlive/2018/bin/x86_64-darwin
 
 # /usr/sbin
 export PATH=$PATH:/usr/sbin
@@ -30,9 +30,6 @@ export PATH=$PATH:/usr/local/sbin
 # ~/.local/bin
 export PATH=$PATH:~/.local/bin
 
-# usr/local/Cellar/i386-elf-binutils/2.23/bin
-export PATH=$PATH:/usr/local/Cellar/i386-elf-binutils/2.23/bin
-
 # pythonライブラリと.local/binをPATHに追加
 for DIR in ${HOME}/Library/Python/2.7/bin ${HOME}/.local/bin ; do
         if [ -d ${DIR} ] ; then
@@ -40,3 +37,10 @@ for DIR in ${HOME}/Library/Python/2.7/bin ${HOME}/.local/bin ; do
         fi
 done
 
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH=$PYENV_ROOT/bin:$PATH
+eval "$(pyenv init -)"
+
+# locale
+export LC_ALL=en_US.UTF-8
