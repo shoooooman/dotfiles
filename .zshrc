@@ -176,3 +176,6 @@ alias less='/usr/share/vim/vim80/macros/less.sh'
 
 # homebrew
 alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew"
+
+# nodenv
+eval "$(nodenv init -)"
