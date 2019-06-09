@@ -44,3 +44,7 @@ eval "$(pyenv init -)"
 
 # locale
 export LC_ALL=en_US.UTF-8
+
+# golang
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
