@@ -1,0 +1,72 @@
+snippet     scanner
+abbr        nextString, nextInt, nextFloat
+alias       sc
+options     head
+    const (
+        initialBufSize = 10000
+        maxBufSize     = 1000000
+    )
+
+    var (
+        sc = func() *bufio.Scanner {
+            sc := bufio.NewScanner(os.Stdin)
+            buf := make([]byte, initialBufSize)
+            sc.Buffer(buf, maxBufSize)
+            sc.Split(bufio.ScanWords)
+            return sc
+        }()
+    )
+
+    func nextString() string {
+        sc.Scan()
+        return sc.Text()
+    }
+
+    func nextInt() int {
+        sc.Scan()
+        i, e := strconv.Atoi(sc.Text())
+        if e != nil {
+            panic(e)
+        }
+        return i
+    }
+
+    func nextFloat() float64 {
+        sc.Scan()
+        f, e := strconv.ParseFloat(sc.Text(), 64)
+        if e != nil {
+            panic(e)
+        }
+        return f
+    }
+
+snippet     reverse
+abbr        reverse string
+alias       rvs
+options     head
+    func reverse(s string) string {
+        rs := []rune(s)
+        for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
+            rs[i], rs[j] = rs[j], rs[i]
+        }
+        return string(rs)
+    }
+
+snippet     min
+options     head
+    func min(x, y int) int {
+        if x <= y {
+            return x
+        }
+        return y
+    }
+
+
+snippet     max
+options     head
+    func max(x, y int) int {
+        if x >= y {
+            return x
+        }
+        return y
+    }

@@ -83,7 +83,7 @@ repo = 'ujihisa/neco-look'
 repo = 'Shougo/neosnippet.vim'
 depends = ['neosnippet-snippets']
 hook_add = '''
-    " let g:neosnippet#snippets_directory='~/.vim/bundle/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets'
+    let g:neosnippet#snippets_directory='~/.vim/snippets'
     " Plugin key-mappings.
     " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
     imap <C-k>     <Plug>(neosnippet_expand_or_jump)
