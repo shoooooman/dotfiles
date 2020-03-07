@@ -37,6 +37,9 @@ for DIR in ${HOME}/Library/Python/2.7/bin ${HOME}/.local/bin ; do
         fi
 done
 
+# pip
+export PATH="/usr/local/lib/python2.7/site-packages:$PATH"
+
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH=$PYENV_ROOT/bin:$PATH
@@ -48,3 +51,13 @@ export LC_ALL=en_US.UTF-8
 # golang
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
+export GO111MODULE="on"
+
+# esp32
+export PATH=$PATH:$HOME/research/zumo/esp/xtensa-esp32-elf/bin
+
+# curl-openssl
+export PATH="/usr/local/opt/curl-openssl/bin:$PATH"
+
+# plantUML
+export PLANTUML_LIMIT_SIZE=8192
