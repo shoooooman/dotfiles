@@ -1,78 +1,36 @@
-""""""""""""""""""""""""""""""
-" プラグインのセットアップ
-""""""""""""""""""""""""""""""
 " dein.vimインストール時に指定したディレクトリをセット
 let s:dein_dir = expand('~/.vim/bundle/dein')
+" dein.vim本体
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-if &compatible
-	set nocompatible               " Be iMproved
+" dein.vimがなければgithubから落としてくる
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
 
-set runtimepath+=~/.vim/bundle/dein/dein.vim
+if dein#load_state(s:dein_dir)
+    call dein#begin(s:dein_dir)
 
-call dein#begin(s:dein_dir)
+    " プラグインリストを収めた TOML ファイル
+    " 予め TOML ファイルを用意しておく
+    let g:rc_dir    = expand('~/.vim/rc')
+    let s:toml      = g:rc_dir . '/dein.toml'
+    let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
 
-call dein#add('altercation/vim-colors-solarized')
-"----------------------------------------------------------
-"" solarizedの設定
-"----------------------------------------------------------
-colorscheme solarized " カラースキームにsolarizedを設定する
-syntax enable " 構文に色をつける
+    " TOML を読み込み、キャッシュしておく
+    call dein#load_toml(s:toml,      {'lazy': 0})
+    call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
-call dein#add('Shougo/dein.vim')
-call dein#add('Shougo/vimproc.vim', {'build': 'make'})
-
-" ファイルオープンを便利に
-call dein#add('Shougo/unite.vim')
-" Unite.vimで最近使ったファイルを表示できるようにする
-" call dein#add('Shougo/neomru.vim')
-
-" powerline
-call dein#add('Lokaltog/vim-powerline')
-let g:Powerline_symbols = 'fancy'
-
-" 補完機能
-call dein#add('Shougo/deoplete.nvim')
-if !has('nvim')
-	  call dein#add('roxma/nvim-yarp')
-	  call dein#add('roxma/vim-hug-neovim-rpc')
+    call dein#end()
+    call dein#save_state()
 endif
-call dein#add('Shougo/neco-vim')
-call dein#add('Shougo/neco-syntax')
-call dein#add('ujihisa/neco-look')
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('Shougo/neosnippet-snippets')
-" Clang snippet
-" call dein#add('Shougo/deoplete-clangx')
 
-"next completion by tab
-inoremap <expr><TAB> pumvisible() ? "\<C-N>" : "\<TAB>"
-"close popup and delete backword char
-inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
-inoremap <expr><BS>  deoplete#mappings#smart_close_popup()."\<C-h>"
-"dicision by Enter
-inoremap <expr><CR> pumvisible() ? "\<C-y>": "\<CR>"
-
-let g:deoplete#enable_at_startup = 1
-
-" ファイルをtree表示してくれる
-call dein#add('scrooloose/nerdtree')
-" NERDTreeToggleをCtrl+eで開く
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
-
-" コメントON/OFFを手軽に実行
-call dein#add('tomtom/tcomment_vim')
-" 括弧を自動補完
-call dein#add('cohama/lexima.vim')
-
-" 末尾の全角スペースと半角スペースを可視化
-call dein#add('bronson/vim-trailing-whitespace')
-
-" arduino syntax highlight
-call dein#add('sudar/vim-arduino-syntax')
-
-call dein#end()
-call dein#save_state()
+if dein#check_install()
+    call dein#install()
+endif
 
 " Required:
 filetype plugin indent on
@@ -82,12 +40,19 @@ set fileencoding=utf-8
 scriptencoding utf-8
 set autoindent " 改行時に前の行のインデントを継続する
 set smartindent " 改行時に前の行の構文をチェックし次の行のインデントを増減する
+
+syntax enable
+" カラースキームにsolarizedを設定する
+colorscheme solarized
+
 " tabをspace4つ分にする
 set tabstop=4
 set expandtab
 set shiftwidth=4
+
 " clipboardと連携
 set clipboard=unnamed,autoselect
+
 " ペースト時の自動インデントを無効
 if &term =~ "xterm"
 	let &t_SI .= "\e[?2004h"
@@ -129,11 +94,18 @@ set cursorline
 " 現在の列を強調表示
 set cursorcolumn
 
-" powerline vim_powerlineではない方
-" python from powerline.vim import setup as powerline_setup
-" python powerline_setup()
-" python del powerline_setup
-"
 set laststatus=2 " Always display the statusline in all windows
 set showtabline=2 " Always display the tabline, even if there is only one tab
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+
+" 閉じタグを自動補完
+augroup CloseXML
+  autocmd!
+  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
+  autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
+  autocmd Filetype vue inoremap <buffer> </ </<C-x><C-o>
+augroup END
+
+" local環境ごとにvimrcを追加
+" 聞いたときに大文字のY/N/Aで答えた場合のみ上記の動作をする
+let g:localvimrc_persistent=1
