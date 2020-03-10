@@ -109,3 +109,6 @@ augroup END
 " local環境ごとにvimrcを追加
 " 聞いたときに大文字のY/N/Aで答えた場合のみ上記の動作をする
 let g:localvimrc_persistent=1
+
+" To prevent conceal in LaTeX files
+let g:tex_conceal = ''
