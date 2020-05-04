@@ -70,3 +70,27 @@ options     head
         }
         return y
     }
+
+snippet     mins
+options     head
+    func min(values ...int) int {
+        mv := math.MaxInt64
+        for _, v := range values {
+            if v < mv {
+                mv = v
+            }
+        }
+        return mv
+    }
+
+snippet     maxs
+options     head
+    func max(values ...int) int {
+        mv := math.MinInt64
+        for _, v := range values {
+            if v > mv {
+                mv = v
+            }
+        }
+        return mv
+    }
