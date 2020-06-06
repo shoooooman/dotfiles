@@ -1,0 +1,15 @@
+\documentclass[a4j,10.5pt,uplatex]{jsarticle}
+
+\usepackage[top=15truemm,bottom=15truemm,left=20truemm,right=20truemm]{geometry}
+
+\title{}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{}
+
+\end{document}

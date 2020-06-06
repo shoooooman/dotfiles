@@ -112,3 +112,6 @@ let g:localvimrc_persistent=1
 
 " To prevent conceal in LaTeX files
 let g:tex_conceal = ''
+
+" texのテンプレートをファイル作成時に挿入
+autocmd BufNewFile *.tex 0r ~/.vim/template/tex.txt
