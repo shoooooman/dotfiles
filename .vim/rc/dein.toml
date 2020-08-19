@@ -11,11 +11,12 @@ repo = 'Shougo/vimproc.vim'
 #     let g:Powerline_symbols = 'fancy'
 # '''
 
+# vimのpowerline (themeも設定)
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
-    let g:airline_solarized_bg='dark'
     let g:airline_powerline_fonts = 1
+    let g:airline_theme='powerlineish'
 '''
 
 [[plugins]]
