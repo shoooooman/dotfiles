@@ -4,16 +4,22 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
 
-[[plugins]]
-repo = 'altercation/vim-colors-solarized'
-# set colorscheme in vimrc
-
 # powerline
+# [[plugins]]
+# repo = 'Lokaltog/vim-powerline'
+# hook_add = '''
+#     let g:Powerline_symbols = 'fancy'
+# '''
+
 [[plugins]]
-repo = 'Lokaltog/vim-powerline'
+repo = 'vim-airline/vim-airline'
 hook_add = '''
-    let g:Powerline_symbols = 'fancy'
+    let g:airline_solarized_bg='dark'
+    let g:airline_powerline_fonts = 1
 '''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
 
 # default snippets
 [[plugins]]
@@ -46,6 +52,10 @@ hook_source = '''
     " NERDTreeToggleをCtrl+eで開く
     nnoremap <silent><C-e> :NERDTreeToggle<CR>
 '''
+
+# vim上でgit操作
+[[plugins]]
+repo = 'tpope/vim-fugitive'
 
 # ファイルオープンを便利に
 [[plugins]]
@@ -95,6 +105,10 @@ repo = 'posva/vim-vue'
 # plantuml syntax
 [[plugins]]
 repo = 'aklt/plantuml-syntax'
+
+# local vimrc (add .lvimrc)
+[[plugins]]
+repo = 'embear/vim-localvimrc'
 
 # 自動でeslint見て整形してくれる
 # [[plugins]]

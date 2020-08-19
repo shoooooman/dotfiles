@@ -41,10 +41,6 @@ scriptencoding utf-8
 set autoindent " 改行時に前の行のインデントを継続する
 set smartindent " 改行時に前の行の構文をチェックし次の行のインデントを増減する
 
-syntax enable
-" カラースキームにsolarizedを設定する
-colorscheme solarized
-
 " tabをspace4つ分にする
 set tabstop=4
 set expandtab
@@ -108,7 +104,7 @@ augroup END
 
 " local環境ごとにvimrcを追加
 " 聞いたときに大文字のY/N/Aで答えた場合のみ上記の動作をする
-let g:localvimrc_persistent=1
+" let g:localvimrc_persistent=1
 
 " To prevent conceal in LaTeX files
 let g:tex_conceal = ''

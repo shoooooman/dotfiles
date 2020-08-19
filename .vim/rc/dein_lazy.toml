@@ -4,8 +4,8 @@ depends = [ 'nvim-yarp', 'vim-hug-neovim-rpc' ]
 hook_source = '''
     " call deoplete#enable()
     let g:deoplete#enable_at_startup = 1
-    let g:deoplete#auto_complete_delay = 0
-    let g:deoplete#auto_complete_start_length = 1
+    " let g:deoplete#auto_complete_delay = 0
+    " let g:deoplete#auto_complete_start_length = 1
     " No display of the number of competion list
     set shortmess+=c
 
@@ -41,6 +41,15 @@ hook_source = '''
 '''
 # インサートモードに入ったとき読み込む
 on_i = 1
+
+# カラースキームにsolarizedを設定する
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+hook_add = '''
+  syntax enable
+  set background=dark
+  colorscheme solarized
+'''
 
 # Clang snippet
 # [[plugins]]
