@@ -52,6 +52,7 @@ export LC_ALL=en_US.UTF-8
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export GO111MODULE="on"
+export PATH=$PATH:$GOPATH/bin
 
 # esp32
 export PATH=$PATH:$HOME/research/zumo/esp/xtensa-esp32-elf/bin
