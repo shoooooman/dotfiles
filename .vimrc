@@ -41,6 +41,9 @@ scriptencoding utf-8
 set autoindent " 改行時に前の行のインデントを継続する
 set smartindent " 改行時に前の行の構文をチェックし次の行のインデントを増減する
 
+" menu,preview とすると補完情報がpreview windowに表示される
+set completeopt=menu
+
 " tabをspace4つ分にする
 set tabstop=4
 set expandtab
