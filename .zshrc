@@ -171,8 +171,8 @@ tmux_automatically_attach_session
 alias get_esp32="export PATH=$PATH:$HOME/research/zumo/esp/xtensa-esp32-elf/bin"
 export IDF_PATH=$HOME/research/zumo/esp/esp-idf
 
-# less.sh
-alias less='/usr/share/vim/vim80/macros/less.sh'
+# less.sh (d cmd is slow)
+# alias less='/usr/share/vim/vim81/macros/less.sh'
 
 # homebrew
 alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew"
