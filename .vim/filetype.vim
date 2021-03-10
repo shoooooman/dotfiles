@@ -1,3 +1,5 @@
 augroup filetypedetect
-    au BufRead,BufNewFile *.css setfiletype css
+    autocmd!
+    autocmd BufRead,BufNewFile *.js setfiletype javascript
+    autocmd BufRead,BufNewFile *.css setfiletype css
 augroup END
