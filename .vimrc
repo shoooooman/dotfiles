@@ -12,24 +12,24 @@ if &runtimepath !~# '/dein.vim'
 endif
 
 if dein#load_state(s:dein_dir)
-    call dein#begin(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-    " プラグインリストを収めた TOML ファイル
-    " 予め TOML ファイルを用意しておく
-    let g:rc_dir    = expand('~/.vim/rc')
-    let s:toml      = g:rc_dir . '/dein.toml'
-    let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
+  " プラグインリストを収めた TOML ファイル
+  " 予め TOML ファイルを用意しておく
+  let g:rc_dir    = expand('~/.vim/rc')
+  let s:toml      = g:rc_dir . '/dein.toml'
+  let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
 
-    " TOML を読み込み、キャッシュしておく
-    call dein#load_toml(s:toml,      {'lazy': 0})
-    call dein#load_toml(s:lazy_toml, {'lazy': 1})
+  " TOML を読み込み、キャッシュしておく
+  call dein#load_toml(s:toml,      {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
-    call dein#end()
-    call dein#save_state()
+  call dein#end()
+  call dein#save_state()
 endif
 
 if dein#check_install()
-    call dein#install()
+  call dein#install()
 endif
 
 " Required:
@@ -54,16 +54,16 @@ set clipboard=unnamed,autoselect
 
 " ペースト時の自動インデントを無効
 if &term =~ "xterm"
-    let &t_SI .= "\e[?2004h"
-    let &t_EI .= "\e[?2004l"
-    let &pastetoggle = "\e[201~"
+  let &t_SI .= "\e[?2004h"
+  let &t_EI .= "\e[?2004l"
+  let &pastetoggle = "\e[201~"
 
-    function XTermPasteBegin(ret)
-        set paste
-        return a:ret
-    endfunction
+  function XTermPasteBegin(ret)
+    set paste
+    return a:ret
+  endfunction
 
-    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+  inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 endif
 
 " ビープ音を可視化
@@ -115,5 +115,10 @@ let g:tex_conceal = ''
 " texのテンプレートをファイル作成時に挿入
 autocmd BufNewFile *.tex 0r ~/.vim/template/tex.txt
 
-" filetypeプラグインによるindentをonにする
-filetype plugin indent on
+" ファイルタイプ毎にインデント幅を設定
+augroup fileTypeIndent
+  autocmd!
+  autocmd BufNewFile,BufRead *.vimrc setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead *.css setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
