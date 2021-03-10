@@ -38,6 +38,22 @@ hook_source = '''
     nnoremap <silent><C-e> :NERDTreeToggle<CR>
 '''
 
+# 括弧を自動補完
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+# コメントON/OFFを手軽に実行
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = ['go']
+hook_add = '''
+    let g:go_fmt_command = "goimports"
+    let g:go_metalinter_autosave = 1
+'''
+
 # vue.js
 [[plugins]]
 repo = 'posva/vim-vue'
