@@ -1,5 +1,20 @@
+# カラースキームにsolarizedを設定する
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+hook_add = '''
+    syntax enable
+    set background=dark
+    colorscheme solarized
+    highlight SignColumn ctermbg=Black
+    " highlight link LspErrorHighlight Underlined
+    " highlight link LspWarningHighlight Underlined
+    " highlight link LspInformationHighlight Underlined
+    " highlight link LspHintHighlight Underlined
+'''
+
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
+on_i = 1
 depends = [ 'nvim-yarp', 'vim-hug-neovim-rpc' ]
 hook_source = '''
     " call deoplete#enable()
@@ -39,42 +54,27 @@ hook_source = '''
           \ })
     call deoplete#custom#option('camel_case', v:true)
 '''
-# インサートモードに入ったとき読み込む
-on_i = 1
 
-# カラースキームにsolarizedを設定する
+# for deoplete
 [[plugins]]
-repo = 'altercation/vim-colors-solarized'
-hook_add = '''
-  syntax enable
-  set background=dark
-  colorscheme solarized
-'''
+repo = 'roxma/nvim-yarp'
+if   = '''!has('nvim')'''
 
-# Clang snippet
-# [[plugins]]
-# repo = 'zchee/deoplete-clang'
-# on_ft = ['c', 'cpp', 'cmake']
-# hook_source = '''
-#     let g:deoplete#sources#clang#libclang_path = system("llvm-config --prefix")[:-2] . '/lib/libclang.dylib'
-#     let g:deoplete#sources#clang#clang_header = system("llvm-config --prefix")[:-2] . '/lib/clang'
-#     let g:deoplete#sources#clang#sort_algo = 'priority'
-#     let g:deoplete#sources#clang#clang_complete_database="./build/"
-# '''
-# depends = ['deoplete.nvim']
+# for deoplete
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+if   = '''!has('nvim')'''
+
+# deoplete source using vim-lsp
+[[plugins]]
+repo = 'lighttiger2505/deoplete-vim-lsp'
+on_i = 1
+depends = ['deoplete.nvim']
 
 [[plugins]]
 repo = 'Shougo/neoinclude.vim'
 on_ft = ['c', 'cpp']
 depends = ['deoplete.nvim']
-
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-if   = '''!has('nvim')'''
-
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
-if   = '''!has('nvim')'''
 
 # vim scriptの補完
 [[plugins]]
@@ -90,6 +90,8 @@ repo = 'ujihisa/neco-look'
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
+on_i = 1
+on_ft = ['snippet']
 depends = ['neosnippet-snippets']
 hook_add = '''
     let g:neosnippet#snippets_directory='~/.vim/snippets'
@@ -112,27 +114,6 @@ hook_add = '''
     if has('conceal')
       set conceallevel=2 concealcursor=niv
     endif
-'''
-# インサートモードに入ったとき読み込む
-on_i = 1
-on_ft = ['snippet']
-
-[[plugins]]
-repo = 'dense-analysis/ale'
-on_ft = ['javascript', 'javascriptreact', 'typescript', 'typescriptreact']
-hook_add = '''
-    " シンボルカラムを表示したままにする
-    " let g:ale_sign_column_always = 1
-    " 保存時に整形してくれる
-    let g:ale_fix_on_save = 1
-    " 補完してくれる
-    " let g:ale_completion_enabled = 1
-    " エラー行に表示するマーク
-    let g:ale_sign_error = '⨉'
-    let g:ale_sign_warning = '⚠'
-    " エラー行にカーソルをあわせた際に表示されるメッセージフォーマット
-    let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-    let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 '''
 
 # ファイルオープンを便利に

@@ -1,8 +1,59 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
+# Language Server for vim
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+hook_add = '''
+    setlocal signcolumn=yes
+
+    " LSP commands
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gn <plug>(lsp-next-diagnostic)
+    nmap <buffer> gN <plug>(lsp-previous-diagnostic)
+    nmap <buffer> gs <plug>(lsp-rename)
+
+    let g:lsp_diagnostics_echo_cursor = 1
+    let g:lsp_diagnostics_echo_delay = 200
+    let g:lsp_diagnostics_highlights_enabled = 1
+    " let g:lsp_diagnostics_float_cursor = 1
+    let g:lsp_diagnostics_signs_error = {'text': '✗'}
+    let g:lsp_diagnostics_signs_warning = {'text': '⚠'}
+    let g:lsp_diagnostics_signs_hint = {'text': '💡'}
+
+    let g:lsp_document_code_action_signs_enabled = 0
+'''
+
+# Auto settings for vim-lsp
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+hook_add = '''
+    let g:lsp_settings_filetype_go = ['gopls', 'golangci-lint-langserver']
+    let g:lsp_settings_filetype_javascript = ['typescript-language-server', 'efm-langserver']
+'''
+
+# [[plugins]]
+# repo = 'tsuyoshicho/vim-efm-langserver-settings'
+# depends = ['vim-lsp']
+
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
+
+# conflict with vim-lsp (though cannot use lint via vim-lsp for now)
+# [[plugins]]
+# repo = 'dense-analysis/ale'
+# hook_add = '''
+#     " シンボルカラムを表示したままにする
+#     " let g:ale_sign_column_always = 1
+#     " 保存時に整形してくれる
+#     let g:ale_fix_on_save = 1
+#     " エラー行に表示するマーク
+#     let g:ale_sign_error = '⨉'
+#     let g:ale_sign_warning = '⚠'
+#     " エラー行にカーソルをあわせた際に表示されるメッセージフォーマット
+#     let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+#     let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+# '''
 
 # powerline
 # [[plugins]]
@@ -46,12 +97,21 @@ repo = 'cohama/lexima.vim'
 [[plugins]]
 repo = 'tomtom/tcomment_vim'
 
+# conflict with vim-lsp
+# [[plugins]]
+# repo = 'fatih/vim-go'
+# on_ft = ['go']
+# hook_add = '''
+#     " let g:go_fmt_command = "goimports"
+#     let g:go_metalinter_autosave = 1
+# '''
+
+# GoImport & 保存時自動ソースコード整形 (instead of vim-go)
 [[plugins]]
-repo = 'fatih/vim-go'
+repo = 'mattn/vim-goimports'
 on_ft = ['go']
 hook_add = '''
-    let g:go_fmt_command = "goimports"
-    let g:go_metalinter_autosave = 1
+    let g:goimports_simplify = 1
 '''
 
 # vue.js
