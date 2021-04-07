@@ -179,3 +179,9 @@ alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin br
 
 # nodenv
 eval "$(nodenv init -)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/shoman/sdk/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/shoman/sdk/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/shoman/sdk/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/shoman/sdk/google-cloud-sdk/completion.zsh.inc'; fi
