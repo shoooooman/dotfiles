@@ -166,11 +166,6 @@ tmux_automatically_attach_session
 
 # tmux end
 
-# esp
-# when need esp, type get_esp32
-alias get_esp32="export PATH=$PATH:$HOME/research/zumo/esp/xtensa-esp32-elf/bin"
-export IDF_PATH=$HOME/research/zumo/esp/esp-idf
-
 # less.sh (d cmd is slow)
 # alias less='/usr/share/vim/vim81/macros/less.sh'
 

@@ -54,9 +54,6 @@ export GOBIN=$GOPATH/bin
 export GO111MODULE="on"
 export PATH=$PATH:$GOPATH/bin
 
-# esp32
-export PATH=$PATH:$HOME/research/zumo/esp/xtensa-esp32-elf/bin
-
 # curl-openssl
 export PATH="/usr/local/opt/curl-openssl/bin:$PATH"
 
