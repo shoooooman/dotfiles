@@ -5,7 +5,7 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 hook_add = '''
-    setlocal signcolumn=yes
+    set signcolumn=yes
 
     " LSP commands
     nmap <buffer> gd <plug>(lsp-definition)
