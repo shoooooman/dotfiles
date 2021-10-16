@@ -12,12 +12,6 @@ hook_add = '''
     " highlight link LspHintHighlight Underlined
 '''
 
-# deoplete source using vim-lsp
-[[plugins]]
-repo = 'lighttiger2505/deoplete-vim-lsp'
-on_i = 1
-depends = ['deoplete.nvim']
-
 [[plugins]]
 repo = 'Shougo/neoinclude.vim'
 on_ft = ['c', 'cpp']

@@ -12,6 +12,7 @@ hook_add = '''
     nmap <buffer> gn <plug>(lsp-next-diagnostic)
     nmap <buffer> gN <plug>(lsp-previous-diagnostic)
     nmap <buffer> gs <plug>(lsp-rename)
+    nmap <buffer> K <plug>(lsp-hover)
 
     let g:lsp_diagnostics_echo_cursor = 1
     let g:lsp_diagnostics_echo_delay = 200
@@ -99,7 +100,22 @@ hook_add = '''
     let g:deoplete#enable_at_startup = 1
     call deoplete#custom#option({
     \ 'min_pattern_length': 1,
+    \ 'auto_complete': v:true,
+    \ 'auto_complete_delay': 0,
+    \ 'auto_refresh_delay': 20,
+    \ 'refresh_always': v:true,
+    \ 'smart_case': v:true,
+    \ 'camel_case': v:true,
     \ })
+
+    " use lsp as a deoplete source
+    let s:use_lsp_sources = ['lsp', 'dictionary', 'file']
+    call deoplete#custom#option('sources', {
+    \ 'go': s:use_lsp_sources,
+    \ 'python': s:use_lsp_sources,
+    \ 'vim': ['vim', 'buffer', 'dictionary', 'file'],
+    \ })
+
     " No display of the number of competion list
     set shortmess+=c
 
@@ -131,8 +147,13 @@ hook_add = '''
           \ '_': '[a-zA-Z_]\k*\(?',
           \ 'tex': '[^\w|\s][a-zA-Z_]\w*',
           \ })
-    call deoplete#custom#option('camel_case', v:true)
 '''
+
+# deoplete source using vim-lsp
+[[plugins]]
+repo = 'lighttiger2505/deoplete-vim-lsp'
+on_i = 1
+depends = ['deoplete.nvim', 'prabirshrestha/vim-lsp']
 
 # default snippets
 [[plugins]]
