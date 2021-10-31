@@ -10,9 +10,6 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
-# gnuplot
-export PATH=/Applications/gnuplot.app:/Applications/gnuplot.app/bin:$PATH
-
 export PATH=$PATH:~/.nodebrew/current/bin
 
 # tex関連
