@@ -15,7 +15,7 @@ hook_add = '''
 [[plugins]]
 repo = 'Shougo/neoinclude.vim'
 on_ft = ['c', 'cpp']
-depends = ['deoplete.nvim']
+depends = [ 'deoplete.nvim' ]
 
 # vim scriptの補完
 [[plugins]]
@@ -33,7 +33,7 @@ repo = 'ujihisa/neco-look'
 repo = 'Shougo/neosnippet.vim'
 on_i = 1
 on_ft = ['snippet']
-depends = ['neosnippet-snippets']
+depends = [ 'neosnippet-snippets' ]
 hook_add = '''
     let g:neosnippet#snippets_directory='~/.vim/snippets'
     " Plugin key-mappings.

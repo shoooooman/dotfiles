@@ -35,7 +35,7 @@ hook_add = '''
 
 # [[plugins]]
 # repo = 'tsuyoshicho/vim-efm-langserver-settings'
-# depends = ['vim-lsp']
+# depends = [ 'vim-lsp' ]
 
 # [[plugins]]
 # repo = 'Shougo/vimproc.vim'
@@ -153,7 +153,7 @@ hook_add = '''
 [[plugins]]
 repo = 'lighttiger2505/deoplete-vim-lsp'
 on_i = 1
-depends = ['deoplete.nvim', 'prabirshrestha/vim-lsp']
+depends = [ 'deoplete.nvim', 'vim-lsp' ]
 
 # default snippets
 [[plugins]]
