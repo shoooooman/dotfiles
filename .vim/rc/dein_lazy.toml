@@ -12,9 +12,110 @@ hook_add = '''
     " highlight link LspHintHighlight Underlined
 '''
 
+# Language Server for vim
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+hook_add = '''
+    set signcolumn=yes
+
+    " LSP commands
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gn <plug>(lsp-next-diagnostic)
+    nmap <buffer> gN <plug>(lsp-previous-diagnostic)
+    nmap <buffer> gs <plug>(lsp-rename)
+    nmap <buffer> K <plug>(lsp-hover)
+
+    let g:lsp_diagnostics_echo_cursor = 1
+    let g:lsp_diagnostics_echo_delay = 200
+    let g:lsp_diagnostics_highlights_enabled = 1
+    " let g:lsp_diagnostics_float_cursor = 1
+    let g:lsp_diagnostics_signs_error = {'text': '✗'}
+    let g:lsp_diagnostics_signs_warning = {'text': '⚠'}
+    let g:lsp_diagnostics_signs_hint = {'text': '💡'}
+
+    let g:lsp_document_code_action_signs_enabled = 0
+'''
+
+# Auto settings for vim-lsp
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+hook_add = '''
+    let g:lsp_settings_filetype_go = ['gopls', 'golangci-lint-langserver']
+    let g:lsp_settings_filetype_javascript = ['typescript-language-server', 'efm-langserver']
+'''
+
+# for deoplete
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+if   = '''!has('nvim')'''
+
+# for deoplete
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+if   = '''!has('nvim')'''
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+depends = [ 'nvim-yarp', 'vim-hug-neovim-rpc' ]
+on_source = [ 'deoplete-vim-lsp' ]
+hook_add = '''
+    let g:deoplete#enable_at_startup = 1
+
+    " No display of the number of competion list
+    set shortmess+=c
+
+    " <TAB>: completion.
+    inoremap <silent><expr> <TAB>
+          \ pumvisible() ? "\<C-n>" :
+          \ <SID>check_back_space() ? "\<TAB>" :
+          \ deoplete#manual_complete()
+    function! s:check_back_space() abort
+      let col = col('.') - 1
+      return !col || getline('')[col - 1]  =~ '\s'
+    endfunction
+
+    " <S-TAB>: completion back.
+    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
+    " <C-e>: popup cancel
+    inoremap <expr><C-e>       deoplete#cancel_popup()
+'''
+hook_source = '''
+    call deoplete#custom#option({
+    \ 'min_pattern_length': 1,
+    \ 'auto_complete': v:true,
+    \ 'auto_complete_delay': 0,
+    \ 'auto_refresh_delay': 20,
+    \ 'refresh_always': v:true,
+    \ 'smart_case': v:true,
+    \ 'camel_case': v:true,
+    \ })
+
+    " use lsp as a deoplete source
+    call deoplete#custom#option('sources', {
+    \ '_': ['buffer', 'lsp', 'file'],
+    \ 'javascript': [],
+    \ 'vim': ['vim', 'buffer', 'dictionary', 'file'],
+    \ })
+
+    call deoplete#custom#source('_', 'matchers', ['matcher_head'])
+
+    call deoplete#custom#source('_', 'converters', [
+    \ 'converter_remove_paren',
+    \ 'converter_remove_overlap',
+    \ 'matcher_length',
+    \ 'converter_truncate_abbr',
+    \ 'converter_truncate_menu',
+    \ 'converter_auto_delimiter',
+    \ ])
+
+    call deoplete#custom#option('keyword_patterns', {
+    \ '_': '[a-zA-Z_]\k*\(?',
+    \ 'tex': '[^\w|\s][a-zA-Z_]\w*',
+    \ })
+'''
+
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
-on_i = 1
 on_ft = ['snippet']
 depends = [ 'neosnippet-snippets' ]
 hook_add = '''
