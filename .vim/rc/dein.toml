@@ -33,36 +33,6 @@ hook_add = '''
     let g:lsp_settings_filetype_javascript = ['typescript-language-server', 'efm-langserver']
 '''
 
-# [[plugins]]
-# repo = 'tsuyoshicho/vim-efm-langserver-settings'
-# depends = [ 'vim-lsp' ]
-
-# [[plugins]]
-# repo = 'Shougo/vimproc.vim'
-
-# conflict with vim-lsp (though cannot use lint via vim-lsp for now)
-# [[plugins]]
-# repo = 'dense-analysis/ale'
-# hook_add = '''
-#     " シンボルカラムを表示したままにする
-#     " let g:ale_sign_column_always = 1
-#     " 保存時に整形してくれる
-#     let g:ale_fix_on_save = 1
-#     " エラー行に表示するマーク
-#     let g:ale_sign_error = '⨉'
-#     let g:ale_sign_warning = '⚠'
-#     " エラー行にカーソルをあわせた際に表示されるメッセージフォーマット
-#     let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-#     let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
-# '''
-
-# powerline
-# [[plugins]]
-# repo = 'Lokaltog/vim-powerline'
-# hook_add = '''
-#     let g:Powerline_symbols = 'fancy'
-# '''
-
 [[plugins]]
 # ファイルをtree表示してくれる
 repo = 'preservim/nerdtree'
@@ -171,15 +141,6 @@ repo = 'cohama/lexima.vim'
 [[plugins]]
 repo = 'tomtom/tcomment_vim'
 
-# conflict with vim-lsp
-# [[plugins]]
-# repo = 'fatih/vim-go'
-# on_ft = ['go']
-# hook_add = '''
-#     " let g:go_fmt_command = "goimports"
-#     let g:go_metalinter_autosave = 1
-# '''
-
 # GoImport & 保存時自動ソースコード整形 (instead of vim-go)
 [[plugins]]
 repo = 'mattn/vim-goimports'
@@ -195,19 +156,3 @@ repo = 'posva/vim-vue'
 # local vimrc (add .lvimrc)
 [[plugins]]
 repo = 'embear/vim-localvimrc'
-
-# 自動でeslint見て整形してくれる
-# [[plugins]]
-# repo = 'vim-syntastic/syntastic'
-# hook_add = '''
-#     set statusline+=%#warningmsg#
-#     set statusline+=%{SyntasticStatuslineFlag()}
-#     set statusline+=%*
-#
-#     let g:syntastic_always_populate_loc_list = 1
-#     let g:syntastic_auto_loc_list = 1
-#     let g:syntastic_check_on_open = 1
-#     let g:syntastic_check_on_wq = 0
-#     let g:syntastic_javascript_checkers=['eslint']
-#     let g:syntastic_vue_checkers=['eslint']
-# '''
