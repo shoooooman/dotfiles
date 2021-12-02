@@ -12,9 +12,75 @@ hook_add = '''
     " highlight link LspHintHighlight Underlined
 '''
 
+## Completion #################################
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+depends = [ 'denops.vim' ]
+on_event = 'InsertEnter'
+hook_source = '''
+    call ddc#custom#patch_global('sources', ['vim-lsp', 'around', 'file'])
+
+    " Use matcher_head and sorter_rank.
+    call ddc#custom#patch_global('sourceOptions', {
+          \ '_': {
+          \   'matchers': ['matcher_head'],
+          \   'sorters': ['sorter_rank']},
+          \ })
+
+    " Change source options
+    call ddc#custom#patch_global('sourceOptions', {
+          \ 'vim-lsp': {
+          \   'mark': 'lsp',
+          \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
+          \ },
+          \ 'around': {'mark': 'around'},
+          \ 'file': {
+          \   'mark': 'file',
+          \   'isVolatile': v:true,
+          \   'forceCompletionPattern': '\S/\S*',
+          \ },
+          \ })
+
+    " Mappings
+
+    " <TAB>: completion.
+    inoremap <silent><expr> <TAB>
+    \ pumvisible() ? '<C-n>' :
+    \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+    \ '<TAB>' : ddc#map#manual_complete()
+
+    " <S-TAB>: completion back.
+    inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
+
+    " Use ddc
+    call ddc#enable()
+'''
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'shun/ddc-vim-lsp'
+on_source = [ 'vim-lsp', 'ddc.vim' ]
+
+[[plugins]]
+repo = 'Shougo/ddc-around'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'LumaKernel/ddc-file'
+on_source = 'ddc.vim'
+
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
-on_i = 1
 on_ft = ['snippet']
 depends = [ 'neosnippet-snippets' ]
 hook_add = '''

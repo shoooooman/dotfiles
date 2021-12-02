@@ -1,7 +1,7 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-# Language Server for vim
+## Language Server for vim ####################
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 hook_add = '''
@@ -28,6 +28,7 @@ hook_add = '''
 # Auto settings for vim-lsp
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
+depends = [ 'vim-lsp' ]
 hook_add = '''
     let g:lsp_settings_filetype_go = ['gopls', 'golangci-lint-langserver']
     let g:lsp_settings_filetype_javascript = ['typescript-language-server', 'efm-langserver']
@@ -51,79 +52,6 @@ hook_add = '''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
-
-# for deoplete
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-if   = '''!has('nvim')'''
-
-# for deoplete
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
-if   = '''!has('nvim')'''
-
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-on_i = 1
-depends = [ 'nvim-yarp', 'vim-hug-neovim-rpc' ]
-hook_add = '''
-    let g:deoplete#enable_at_startup = 1
-    call deoplete#custom#option({
-    \ 'min_pattern_length': 1,
-    \ 'auto_complete': v:true,
-    \ 'auto_complete_delay': 0,
-    \ 'auto_refresh_delay': 20,
-    \ 'refresh_always': v:true,
-    \ 'smart_case': v:true,
-    \ 'camel_case': v:true,
-    \ })
-
-    " use lsp as a deoplete source
-    let s:use_lsp_sources = ['lsp', 'dictionary', 'file']
-    call deoplete#custom#option('sources', {
-    \ 'go': s:use_lsp_sources,
-    \ 'python': s:use_lsp_sources,
-    \ 'vim': ['vim', 'buffer', 'dictionary', 'file'],
-    \ })
-
-    " No display of the number of competion list
-    set shortmess+=c
-
-    " <TAB>: completion.
-    inoremap <silent><expr> <TAB>
-          \ pumvisible() ? "\<C-n>" :
-          \ <SID>check_back_space() ? "\<TAB>" :
-          \ deoplete#manual_complete()
-    function! s:check_back_space() abort
-      let col = col('.') - 1
-      return !col || getline('')[col - 1]  =~ '\s'
-    endfunction
-
-    " <S-TAB>: completion back.
-    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
-    " <C-e>: popup cancel
-    inoremap <expr><C-e>       deoplete#cancel_popup()
-
-    call deoplete#custom#source('_', 'matchers', ['matcher_head'])
-    call deoplete#custom#source('_', 'converters', [
-          \ 'converter_remove_paren',
-          \ 'converter_remove_overlap',
-          \ 'matcher_length',
-          \ 'converter_truncate_abbr',
-          \ 'converter_truncate_menu',
-          \ 'converter_auto_delimiter',
-          \ ])
-    call deoplete#custom#option('keyword_patterns', {
-          \ '_': '[a-zA-Z_]\k*\(?',
-          \ 'tex': '[^\w|\s][a-zA-Z_]\w*',
-          \ })
-'''
-
-# deoplete source using vim-lsp
-[[plugins]]
-repo = 'lighttiger2505/deoplete-vim-lsp'
-on_i = 1
-depends = [ 'deoplete.nvim', 'vim-lsp' ]
 
 # default snippets
 [[plugins]]
