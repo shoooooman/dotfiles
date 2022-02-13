@@ -13,7 +13,7 @@ fi
 export PATH=$PATH:~/.nodebrew/current/bin
 
 # tex関連
-# export PATH=$PATH:/usr/local/texlive/2018/bin/x86_64-darwin
+export PATH=$PATH:/usr/local/texlive/2018/bin/x86_64-darwin
 
 # /usr/sbin
 export PATH=$PATH:/usr/sbin
